@@ -2,10 +2,10 @@
 
 {% block content %}
 <h1>Products</h1>
-<a href="{% url 'create' %}"><button>새 물건 등록하기</button></a>
+<a href="{% url 'products:create' %}"><button>새 물건 등록하기</button></a>
 
 {% for product in products %}
-    <a href="{% url 'product_detail' product.id %}">
+    <a href="{% url 'products:product_detail' product.id %}">
         <p>[{{ product.id }}] {{ product.title }}</p>
     </a>
     

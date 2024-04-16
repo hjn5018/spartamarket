@@ -21,7 +21,7 @@ def create(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             product = form.save()
-            return redirect('product_detail', product.id)
+            return redirect('products:product_detail', product.id)
     else:
         form = ProductForm()
     context ={'form':form}
@@ -40,17 +40,17 @@ def delete(request, pk):
     product = Product.objects.get(id=pk)
     if request.method == 'POST':
         product.delete()
-        return redirect('products')
-    return redirect('product_detail', product.pk)
+        return redirect('products:products')
+    return redirect('products:product_detail', product.pk)
 
 
 def update(request, pk):
     product = Product.objects.get(id=pk)
     if request.method == 'POST':
-        form = ProductForm(request.Post, instance=product)
+        form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             product = form.save()
-            return redirect('product_detail', product.id)
+            return redirect('products:product_detail', product.id)
     else:
         forms = ProductForm(instance=product)
     context = {

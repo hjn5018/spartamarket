@@ -3,11 +3,11 @@
 {% block content %}
 <h1>New Product Create</h1>
 
-<form action="{% url 'create' %}" method="POST">
+<form action="{% url 'products:create' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button>저장</button>
 </form>
-<a href="{% url 'products' %}"><button>목록으로 이동하기</button></a>
+<a href="{% url 'products:products' %}"><button>목록으로 이동하기</button></a>
 
 {% endblock content %}
