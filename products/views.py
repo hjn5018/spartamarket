@@ -5,7 +5,7 @@ from .forms import ProductForm
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'products/index.html')
 
 
 def products(request):
@@ -13,7 +13,7 @@ def products(request):
     context = {
         'products': products
     }
-    return render(request, 'products.html', context)
+    return render(request, 'products/products.html', context)
 
 
 def create(request):
@@ -25,7 +25,7 @@ def create(request):
     else:
         form = ProductForm()
     context ={'form':form}
-    return render(request, 'create.html', context)
+    return render(request, 'products/create.html', context)
 
 
 def product_detail(request, pk):
@@ -33,7 +33,7 @@ def product_detail(request, pk):
     context = {
         'product':product
     }
-    return render(request, 'product_detail.html', context)
+    return render(request, 'products/product_detail.html', context)
 
 
 def delete(request, pk):
@@ -57,4 +57,4 @@ def update(request, pk):
         'forms':forms,
         'product':product,
     }
-    return render(request, 'update.html', context)
+    return render(request, 'products/update.html', context)
