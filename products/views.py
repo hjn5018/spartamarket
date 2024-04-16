@@ -9,7 +9,7 @@ def index(request):
 
 
 def products(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('-id')
     context = {
         'products': products
     }
@@ -44,17 +44,17 @@ def delete(request, pk):
     return redirect('product_detail', product.pk)
 
 
-def edit(request, pk):
-    product = Product.objects.get(id=pk)
-    context = {
-        'product':product
-    }
-    return render(request, 'edit.html', context)
-
-
 def update(request, pk):
     product = Product.objects.get(id=pk)
-    product.title = request.POST.get('title')
-    product.content = request.POST.get('content')
-    product.save()
-    return redirect('product_detail', product.id)
+    if request.method == 'POST':
+        form = ProductForm(request.Post, instance=product)
+        if form.is_valid():
+            product = form.save()
+            return redirect('product_detail', product.id)
+    else:
+        forms = ProductForm(instance=product)
+    context = {
+        'forms':forms,
+        'product':product,
+    }
+    return render(request, 'update.html', context)

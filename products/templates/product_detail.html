@@ -8,7 +8,7 @@
 <p>작성일시: {{ product.created_at }}</p>
 <p>수정일시: {{ product.updated_at }}</p>
 
-<a href="{% url 'edit' product.id%}">
+<a href="{% url 'update' product.id%}">
     <button>수정하기</button>
 </a>
 
@@ -17,6 +17,6 @@
     <input type="submit" value="삭제하기">
 </form>
 
-<a href="{% url 'products' %}">목록 보기</a>
+<a href="{% url 'products' %}"><button>목록 보기</button></a>
 
 {% endblock content %}
