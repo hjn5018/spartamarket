@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product
+from .forms import ProductForm
 # Create your views here.
 
 
@@ -15,17 +16,16 @@ def products(request):
     return render(request, 'products.html', context)
 
 
-def new(request):
-    return render(request, 'new.html')
-
-
 def create(request):
-    title = request.POST.get('title')
-    content = request.POST.get('content')
-
-    product = Product(title=title, content=content)
-    product.save()
-    return redirect('product_detail', product.id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product = form.save()
+            return redirect('product_detail', product.id)
+    else:
+        form = ProductForm()
+    context ={'form':form}
+    return render(request, 'create.html', context)
 
 
 def product_detail(request, pk):
