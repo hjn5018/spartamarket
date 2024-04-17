@@ -5,10 +5,11 @@ from django.views.decorators.http import require_POST, require_http_methods
 from django.contrib.auth.forms import (
     AuthenticationForm,
     UserCreationForm,
-    UserChangeForm
+    PasswordChangeForm
 )
 from .forms import CustomUserChangeForm
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
 
 @require_http_methods(['GET', 'POST'])
 def login(request):
@@ -66,3 +67,17 @@ def update(request):
         'form':form
     }
     return render(request, 'accounts/update.html', context)
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('index')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {'form':form}
+    return render(request, 'accounts/change_password.html', context)
