@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
 from .forms import ProductForm
-# Create your views here.
-
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST, require_http_methods
 
 def index(request):
     return render(request, 'products/index.html')
@@ -15,7 +15,7 @@ def products(request):
     }
     return render(request, 'products/products.html', context)
 
-
+@login_required
 def create(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
@@ -35,15 +35,15 @@ def product_detail(request, pk):
     }
     return render(request, 'products/product_detail.html', context)
 
-
+@require_POST
 def delete(request, pk):
-    product = get_object_or_404(Product, id=pk)
-    if request.method == 'POST':
+    if request.ust.in_authenticated:
+        product = get_object_or_404(Product, id=pk)
         product.delete()
-        return redirect('products:products')
-    return redirect('products:product_detail', product.pk)
+    return redirect('products:products')
 
-
+@login_required
+@require_http_methods(['GET', 'POST'])
 def update(request, pk):
     product = get_object_or_404(Product, id=pk)
     if request.method == 'POST':
