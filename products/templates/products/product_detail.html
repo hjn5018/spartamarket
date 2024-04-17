@@ -5,8 +5,14 @@
 
 <p>제목: {{ product.title }}</p>
 <p>내용: {{ product.content }}</p>
+
+{% if product.image %}
+    <img src="{{ product.image.url }}" alt="">
+{% endif %}
+
 <p>작성일시: {{ product.created_at }}</p>
 <p>수정일시: {{ product.updated_at }}</p>
+
 
 <a href="{% url 'products:update' product.id%}">
     <button>수정하기</button>
