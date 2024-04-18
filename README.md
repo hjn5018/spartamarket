@@ -9,5 +9,8 @@
   4. 회원의 프로필에서 팔로우, 팔로워, 찜한 물건의 목록을 확인할 수 있습니다.
 
 
-칸반
-https://www.notion.so/teamsparta/ERD-7e34cec7961f411aa71bfb1e2ec3c512
+<a href='https://www.notion.so/teamsparta/ERD-7e34cec7961f411aa71bfb1e2ec3c512'>
+![board](https://github.com/hjn5018/spartamarket/assets/75594057/5ffce9ce-d06f-4bf3-82fe-623088b98ad1)
+
+</a>
+
