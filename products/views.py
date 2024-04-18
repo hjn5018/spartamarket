@@ -7,7 +7,7 @@ from django.views.decorators.http import require_POST, require_http_methods
 def index(request):
     return render(request, 'products/index.html')
 
-
+@login_required
 def products(request):
     products = Product.objects.all().order_by('-id')
     context = {
