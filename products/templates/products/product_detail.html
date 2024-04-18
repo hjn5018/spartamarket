@@ -1,29 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Product Detail</h1>
 
-<p>제목: {{ product.title }}</p>
-<p>내용: {{ product.content }}</p>
-
-{% if product.image %}
+<div>
+    <p>제목: {{ product.title }}</p>
+    <p>내용:</p>
+    {% if product.image %}
     <img src="{{ product.image.url }}" alt="">
-{% endif %}
+    {% endif %}
+    <p>
+        {{ product.content }}
+    </p>
+    <p>작성자: <a href='/users/profile/{{ product.author }}'>{{ product.author }}</a></p>
+    <p>작성: {{ product.created_at }}</p>
+</div>
 
-<p>작성일시: {{ product.created_at }}</p>
-<p>수정일시: {{ product.updated_at }}</p>
-<p>작성자: <a href='/users/profile/{{ product.author }}'>{{ product.author }}</a></p>
 
 
+
+
+
+{% if user == product.author or user.is_superuser == True%}
 <a href="{% url 'products:update' product.id%}">
-    <button>수정하기</button>
+    <button>글 수정</button>
 </a>
 
 <form action="{% url 'products:delete' product.id %}" method="POST">
     {% csrf_token %}
-    <input type="submit" value="삭제하기">
+    <input type="submit" value="글 삭제">
 </form>
-
+{% endif %}
 <form action="{% url 'products:like' product.pk %}" method="POST">
     {% csrf_token %}
     {% if user in product.like.all %}
@@ -34,6 +40,6 @@
 </form>
 
 
-<a href="{% url 'products:products' %}"><button>목록 보기</button></a>
+<a href="{% url 'products:products' %}"><button>목록으로 돌아가기</button></a>
 
 {% endblock content %}

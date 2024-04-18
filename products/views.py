@@ -39,7 +39,7 @@ def product_detail(request, pk):
 
 @require_POST
 def delete(request, pk):
-    if request.ust.in_authenticated:
+    if request.user.is_authenticated:
         product = get_object_or_404(Product, id=pk)
         product.delete()
     return redirect('products:products')

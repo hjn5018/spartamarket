@@ -12,8 +12,12 @@
 
 <div class ='navbar'>
 
+    <a href="/"><button>🥕</button></a>
+
     {% if request.user.is_authenticated %}
     <h3>안녕하세요, {{ user }}님</h3>
+
+    <a href="/users/profile/{{ user }}"><button>프로필 보기</button></a>
 
     <a href="{% url 'accounts:update' %}"><button>회원정보 수정</button></a>
 
@@ -33,7 +37,7 @@
 
     {% endif %}
 </div>
-
+<hr>
 
     {% block content %}
     {% endblock content %}
