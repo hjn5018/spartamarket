@@ -6,16 +6,17 @@
 <div>
 	<h2>username : {{ member.username }}</h2>
 	<h2>가입일 : {{ member.date_joined }}</h2>
-	<h2>등록한 물품 : </h2>
-	<h2>찜한 물건 : </h2>
-	<h2>팔로우 수 : </h2>
-	<h2>팔로워 수 : </h2>
+	<h2>등록한 물품 : {{ member. }}</h2>
+	<h2>찜한 물건 : {{ member.like.all|join:', ' }}</h2>
+	<h2>팔로우 수 : {{ member.follower.all }}</h2>
+	<h2>팔로워 수 : {{ member.follower.all | length }}</h2>
 </div>
 
 <div>
 	<form action="{% url 'users:follow' member.pk %}" method="POST">
 		{% csrf_token %}
-		{% if user in User.follwer.all %}
+
+		{% if user in member.follower.all %}
 		<button type="submit">unfollow</button>
 		{% else %}
 		<button type="submit">follow</button>

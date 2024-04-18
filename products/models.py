@@ -11,7 +11,7 @@ class Product(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='articles',
+        related_name='product',
     )
     like = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
