@@ -20,7 +20,9 @@ def create(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product = form.save()
+            product = form.save(commit=False)
+            product.author = request.user
+            product.save()
             return redirect('products:product_detail', product.id)
     else:
         form = ProductForm()
@@ -30,7 +32,6 @@ def create(request):
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, id=pk)
-    comments = product.comments.all()
     context = {
         'product':product,
     }
