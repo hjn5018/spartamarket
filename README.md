@@ -12,3 +12,8 @@
 <a href='https://www.notion.so/teamsparta/ERD-7e34cec7961f411aa71bfb1e2ec3c512'>
 ℹ️Kanban
 </a>
+
+<br><br><br>
+
+## - 프레임워크
+  Django
