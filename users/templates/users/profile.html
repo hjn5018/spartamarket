@@ -8,8 +8,8 @@
 	<h2>가입일 : {{ member.date_joined }}</h2>
 	<h2>등록한 물품 : {{ member.product.all | join:', ' }}</h2>
 	<h2>찜한 물건 : {{ member.like.all | join:', ' }}</h2>
-	<h2>팔로우 수 : </h2>
-	<h2>팔로워 수 : {{ member.follower.all.count }}</h2>
+	<h2>팔로우 수 : {{ member.follow.count }}</h2>
+	<h2>팔로워 수 : {{ member.follower.count }}</h2>
 </div>
 
 <div>
