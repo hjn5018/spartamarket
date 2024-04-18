@@ -23,6 +23,16 @@
     <input type="submit" value="삭제하기">
 </form>
 
+<form action="{% url 'products:like' product.pk %}" method="POST">
+    {% csrf_token %}
+    {% if user in product.like.all %}
+    <input type="submit" value="♥">
+    {% else %}
+    <input type="submit" value="♡">
+    {% endif %}
+</form>
+
+
 <a href="{% url 'products:products' %}"><button>목록 보기</button></a>
 
 {% endblock content %}
