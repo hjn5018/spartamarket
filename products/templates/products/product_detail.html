@@ -12,6 +12,7 @@
 
 <p>작성일시: {{ product.created_at }}</p>
 <p>수정일시: {{ product.updated_at }}</p>
+<p>작성자: <a href='/users/profile/{{ product.author }}'>{{ product.author }}</a></p>
 
 
 <a href="{% url 'products:update' product.id%}">
