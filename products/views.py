@@ -9,6 +9,10 @@ def index(request):
 
 @login_required
 def products(request):
+    search = request.GET.get('search')
+    # print(search)
+    # search_result = Product.objects.all().contains(search)
+    # print(search_result)
     products = Product.objects.all().order_by('-id')
     context = {
         'products': products
