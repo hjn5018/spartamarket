@@ -17,7 +17,11 @@
     <a href="/"><button>🥕</button></a>
 
     {% if request.user.is_authenticated %}
+    {% if user.image %}
+    <h3>안녕하세요, <img src="{{ user.image.url }}" alt="" style="width: 30px;">{{ user }}님</h3>
+    {% else %}
     <h3>안녕하세요, <img src="{% static 'user.png' %}" alt="" style="width: 30px;">{{ user }}님</h3>
+    {% endif %}
     
 
     <a href="/users/profile/{{ user }}"><button>프로필 보기</button></a>

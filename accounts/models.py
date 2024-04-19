@@ -8,3 +8,7 @@ class User(AbstractUser):
         symmetrical=False,
         related_name='follower',
     )
+    image = models.ImageField(
+        upload_to='User_images/',
+        blank=True,
+    )
