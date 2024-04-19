@@ -11,18 +11,22 @@
 {% endif %}
 <br>
 
-{% for product in products %}
-<div class="box">
-    <a href="{% url 'products:product_detail' product.id %}">
-    {% if product.image %}
-    <img src="{{ product.image.url }}" alt="" class="card-img-top">
-    {% endif %}
-    <h4>{{ product.title }}</h4>
-    <div class="container">
-        <p>관심 {{ product.like.count }}</p>
+<div class="box2">
+    <div class="box1">
+    {% for product in products %}
+    <div class="box">
+        <a href="{% url 'products:product_detail' product.id %}">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="" class="card-img-top">
+            {% endif %}
+            <h4>{{ product.title }}</h4>
+            <div class="container">
+                <p>관심 {{ product.like.count }}</p>
+            </div>
+        </a>
     </div>
-    </a>
+    {% endfor %}
+    </div>
 </div>
-{% endfor %}
 
 {% endblock content %}
