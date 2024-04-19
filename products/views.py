@@ -9,7 +9,11 @@ def index(request):
 
 @login_required
 def products(request):
-    products = Product.objects.all().order_by('-id')
+    sort_by = request.GET.get('sort_by')
+    if sort_by == '관심_순':
+        products = Product.objects.all().order_by('-like')
+    else:
+        products = Product.objects.all().order_by('-id')
     context = {
         'products': products
     }
