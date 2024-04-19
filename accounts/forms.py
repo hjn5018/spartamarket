@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from .models import User
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
@@ -10,6 +11,7 @@ class CustomUserChangeForm(UserChangeForm):
             'email',
             'first_name',
             'last_name',
+            'image',
         )
 
     def __init__(self, *args, **kwargs):

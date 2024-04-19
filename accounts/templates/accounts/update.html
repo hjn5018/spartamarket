@@ -3,7 +3,7 @@
 {% block content %}
 <h1>?Profile? Update Page 회원정보 수정</h1>
 
-<form action="{% url 'accounts:update' %}" method="POST">
+<form action="{% url 'accounts:update' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="수정 완료">
