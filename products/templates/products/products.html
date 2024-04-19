@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <h1>당근이시죠?</h1>
@@ -8,23 +9,16 @@
 {% else %}
 <a href="{% url 'accounts:login' %}"><button>로그인하고 새 물건 등록하기</button></a>
 {% endif %}
+<br>
 
-<div class="row row-cols-1 row-cols-md-4 g-4 mx-auto w-75 pb-5">
-    {% for product in products %}
-    <div class="col">
-        <div class="card h-100">
-            <a href="{% url 'products:product_detail' product.id %}">
-                {% if product.image %}
-                <img src="{{ product.image.url }}" alt="" class="card-img-top">
-                {% endif %}
-                <div class="card-body">
-                    <h4 class="card-title">[{{ product.id }}] {{ product.title }}</h4>
-                </div>
-            </a>
-        </div>
-    </div>
-        <br>
-    {% endfor %}
+{% for product in products %}
+<a href="{% url 'products:product_detail' product.id %}">
+{% if product.image %}
+<img src="{{ product.image.url }}" alt="" class="card-img-top">
+{% endif %}
+<h4>[{{ product.id }}] {{ product.title }}</h4>
+</a>
+{% endfor %}
 
 </div>
 
