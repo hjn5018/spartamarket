@@ -27,8 +27,8 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key ubuntu@YOUR_EC2_IP 'bash -s' <<'EOF'
-        cd /path/to/your/project
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key ubuntu@3.38.192.22 'bash -s' <<'EOF'
+        cd /home/ubuntu/spartamarket
         git pull origin main
         sudo systemctl restart nginx
         sudo systemctl restart gunicorn
