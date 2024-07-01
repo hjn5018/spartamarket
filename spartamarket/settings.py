@@ -26,7 +26,8 @@ SECRET_KEY = config.SECRET_KEY
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '54.180.86.26'
+    '54.180.86.26',
+    '127.0.0.1',
 ]
 
 
