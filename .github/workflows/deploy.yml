@@ -27,7 +27,7 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key ubuntu@13.124.123.152 'bash -s' <<'EOF'
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key ubuntu@54.180.133.189 'bash -s' <<'EOF'
         cd /home/ubuntu/spartamarket
         git pull origin main
         EOF
