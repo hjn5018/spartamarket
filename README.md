@@ -1,3 +1,5 @@
+[![Deploy to EC2](https://github.com/hjn5018/spartamarket/actions/workflows/deploy.yml/badge.svg)](https://github.com/hjn5018/spartamarket/actions/workflows/deploy.yml)
+
 # spartamarket
 
 ## 유저 간 중고거래 사이트
