@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '3.38.96.238',
     'tka-tkavkf.p-e.kr',
-    'www.tka-tkavkf.p-e.kr',
+    # 'www.tka-tkavkf.p-e.kr',
 ]
 
 
